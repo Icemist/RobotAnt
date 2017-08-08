@@ -1,3 +1,6 @@
+#ifndef LEG_H
+#define LEG_H
+
 #include <vector>
 #include <stdexcept>
 #include "pca9685.hpp"
@@ -35,7 +38,7 @@ public:
     }
     
     void action(SEGMENT_NAME segment, int angle, int speed) {
-		segments[segment]->action(angle, speed);
+        segments[segment]->action(angle, speed);
     }
 public:
 	static const int COUNT_SEGMENTS = 5;
@@ -44,3 +47,5 @@ private:
     std::vector<Segment*> segments;
     
 };
+
+#endif // LEG_H
