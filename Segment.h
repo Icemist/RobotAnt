@@ -1,10 +1,12 @@
+#ifndef SEGMENT_H
+#define SEGMENT_H
 #include "pca9685.hpp"
 
 class Segment {
 public:
     Segment(upm::PCA9685& controller, int channel)
     : controller(controller)
-	, channel(channel)
+    , channel(channel)
     , speed(MAX_SPEED)
     , angle(90)
     , requiredAngle(angle)
@@ -37,13 +39,15 @@ private:
         controller.writeByte(upm::PCA9685::REG_LED0_OFF_H + 4*channel, off >> 8);
     }
     
-    double getPWMbyAngle(int angle) {
+    double getPWMbyAngle(float angle) {
         if (angle < 0) {
             angle = 0;
         }
         else if (angle > MAX_ANGLE) {
             angle = Segment::MAX_ANGLE;
         }
-        return ((Segment::MAX_PW - Segment::MIN_PW) * (angle / Segment::MAX_ANGLE)) + Segment::MIN_PW;
+        return ((Segment::MAX_PW - Segment::MIN_PW) * (angle / Segment::MAX_ANGLE)) + Segment::MIN_PW;;
     }
 };
+
+#endif // SEGMENT_H
