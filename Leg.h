@@ -3,15 +3,17 @@
 #include "pca9685.hpp"
 #include "Segment.h"
 
+enum SEGMENT_NAME {
+	Coxa = 0,
+	Trochanter,
+	Femur,
+	Tabia,
+	Tarsus,
+};
+
 class Leg {
 public:
-	enum SEGMENT_NAME {
-		Coxa = 0,
-		Trochanter,
-		Femur,
-		Tabia,
-		Tarsus,
-	};
+
 
     Leg(upm::PCA9685& controller, std::vector<int>& channels)
     : controller(controller)

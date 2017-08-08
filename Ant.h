@@ -3,18 +3,18 @@
 #include "Leg.h"
 #include "Segment.h"
 
+enum LEG_NAME {
+	RightFront = 0,
+	RightMiddle,
+	RightBack,
+	LeftFront,
+	LeftMiddle,
+	LeftBack,
+};
+
 class Ant
 {
-public:
-	enum LEG_NAME {
-		RightFront = 0,
-		RightMiddle,
-		RightBack,
-		LeftFront,
-		LeftMiddle,
-		LeftBack,
-	};
-    
+public:    
     Ant() {
         rightController = new upm::PCA9685(I2C_BUS, FIRST_I2C_ADDRESS);
         rightController->setModeSleep(true);
