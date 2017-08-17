@@ -24,10 +24,10 @@ public:
         rightController->setPrescaleFromHz(50);
         rightController->setModeSleep(false);
   
-//        leftController = new upm::PCA9685(I2C_BUS, SECOND_I2C_ADDRESS);
-//        leftController->setModeSleep(true);
-//        leftController->setPrescaleFromHz(50);
-//        leftController->setModeSleep(false);
+        leftController = new upm::PCA9685(I2C_BUS, SECOND_I2C_ADDRESS);
+        leftController->setModeSleep(true);
+        leftController->setPrescaleFromHz(50);
+        leftController->setModeSleep(false);
         
         for (int i = 0; i < COUNT_LEGS / 2; ++i) {
             std::vector<int> channels({ 0 + i*Leg::COUNT_SEGMENTS,
@@ -40,15 +40,15 @@ public:
         }
 		
         
-//        for (int i = COUNT_LEGS / 2; i < COUNT_LEGS; ++i) {
-//            std::vector<int> channels({ 0 + (i - COUNT_LEGS/2)*Leg::COUNT_SEGMENTS,
-//                                        1 + (i - COUNT_LEGS/2)*Leg::COUNT_SEGMENTS,
-//                                        2 + (i - COUNT_LEGS/2)*Leg::COUNT_SEGMENTS,
-//                                        3 + (i - COUNT_LEGS/2)*Leg::COUNT_SEGMENTS,
-//                                        4 + (i - COUNT_LEGS/2)*Leg::COUNT_SEGMENTS,
-//            });
-//            legs.push_back(new Leg(*leftController, channels));
-//        }
+        for (int i = COUNT_LEGS / 2; i < COUNT_LEGS; ++i) {
+            std::vector<int> channels({ 0 + (i - COUNT_LEGS/2)*Leg::COUNT_SEGMENTS,
+                                        1 + (i - COUNT_LEGS/2)*Leg::COUNT_SEGMENTS,
+                                        2 + (i - COUNT_LEGS/2)*Leg::COUNT_SEGMENTS,
+                                        3 + (i - COUNT_LEGS/2)*Leg::COUNT_SEGMENTS,
+                                        4 + (i - COUNT_LEGS/2)*Leg::COUNT_SEGMENTS,
+            });
+            legs.push_back(new Leg(*leftController, channels));
+        }
     }
     
     ~Ant() {
@@ -56,14 +56,18 @@ public:
             delete legs[i];
         }
         off(rightController);
-//        off(leftController);
+        off(leftController);
         delete rightController;
-//        delete leftController;
+        delete leftController;
     }
     
     void action(LEG_NAME leg, SEGMENT_NAME segment, double angle, double speed) {
         legs[leg]->action(segment, angle, speed);
     }
+
+	void setSegmentAsPeversed(LEG_NAME leg, SEGMENT_NAME segment) {
+		legs[leg]->setSegmentAsPeversed(segment);
+	}
 
 private:
     void off(upm::PCA9685* controller){

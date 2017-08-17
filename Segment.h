@@ -10,7 +10,8 @@ public:
     , speed(MAX_SPEED)
     , angle(90)
     , requiredAngle(angle)
-    , doingAction(false) {
+    , doingAction(false) 
+	, isReversed(false){
         
     }
 public:
@@ -20,16 +21,28 @@ public:
     double angle;
     double requiredAngle;
     bool doingAction;
+	bool isReversed;
     static const int MAX_SPEED = 300; // 300 angle per second
     static const int MIN_PW = 110;
     static const int MAX_PW = 580;
     static const int MAX_ANGLE = 180;
         
-    void action(int angle, int speed) {
+    void action(double angle, double speed) {
+		reverse(angle);
         requiredAngle = angle;
         speed = speed;
         setPWM(0, getPWMbyAngle(requiredAngle));
     }
+	
+	void reverse(double& angle) {
+		if (isReversed) {
+			angle = 180 - angle;
+		}
+	}
+	
+	void setAsReversed() {
+		isReversed = true;
+	}
     
 private:
     void setPWM(int on, int off){
@@ -39,7 +52,7 @@ private:
         controller.writeByte(upm::PCA9685::REG_LED0_OFF_H + 4*channel, off >> 8);
     }
     
-    double getPWMbyAngle(float angle) {
+    double getPWMbyAngle(double angle) {
         if (angle < 0) {
             angle = 0;
         }

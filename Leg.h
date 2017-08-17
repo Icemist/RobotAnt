@@ -16,8 +16,6 @@ enum SEGMENT_NAME {
 
 class Leg {
 public:
-
-
     Leg(upm::PCA9685& controller, std::vector<int>& channels)
     : controller(controller)
     {
@@ -37,9 +35,14 @@ public:
         }
     }
     
-    void action(SEGMENT_NAME segment, int angle, int speed) {
+    void action(SEGMENT_NAME segment, double angle, double speed) {
         segments[segment]->action(angle, speed);
     }
+
+	void setSegmentAsPeversed(SEGMENT_NAME segment) {
+		segments[segment]->setAsReversed();
+	}
+
 public:
 	static const int COUNT_SEGMENTS = 5;
 private:
