@@ -4,27 +4,63 @@
 
 int main() {
 	Ant ant;
-        //for(int i = 0; i < 1; ++i){
-            ant.action(LEG_NAME::RightFront, SEGMENT_NAME::Coxa, 70, Segment::MAX_SPEED);
-            sleep(1);
-            ant.action(LEG_NAME::RightFront, SEGMENT_NAME::Trochanter, 70, Segment::MAX_SPEED);
-            sleep(1);
-            ant.action(LEG_NAME::RightFront, SEGMENT_NAME::Femur, 70, Segment::MAX_SPEED);
-            sleep(1);
-            ant.action(LEG_NAME::RightFront, SEGMENT_NAME::Tabia, 70, Segment::MAX_SPEED);
-            sleep(1);
-            ant.action(LEG_NAME::RightFront, SEGMENT_NAME::Tarsus, 70, Segment::MAX_SPEED);        
-            sleep(1);
-            ant.action(LEG_NAME::RightFront, SEGMENT_NAME::Coxa, 120, Segment::MAX_SPEED);
-            sleep(1);
-            ant.action(LEG_NAME::RightFront, SEGMENT_NAME::Trochanter, 120, Segment::MAX_SPEED);
-            sleep(1);
-            ant.action(LEG_NAME::RightFront, SEGMENT_NAME::Femur, 120, Segment::MAX_SPEED);
-            sleep(1);
-            ant.action(LEG_NAME::RightFront, SEGMENT_NAME::Tabia, 120, Segment::MAX_SPEED);
-            sleep(1);
-            ant.action(LEG_NAME::RightFront, SEGMENT_NAME::Tarsus, 120, Segment::MAX_SPEED);        
-            sleep(1);
-        //}
+    std::cout << "Started" << std::endl;
+    ant.action(LEG_NAME::RightFront, SEGMENT_NAME::Coxa, 90, Segment::MAX_SPEED);
+	ant.action(LEG_NAME::RightFront, SEGMENT_NAME::Trochanter, 90, Segment::MAX_SPEED);
+	ant.action(LEG_NAME::RightFront, SEGMENT_NAME::Femur, 90, Segment::MAX_SPEED);
+	ant.action(LEG_NAME::RightFront, SEGMENT_NAME::Tabia, 90, Segment::MAX_SPEED);
+	ant.action(LEG_NAME::RightFront, SEGMENT_NAME::Tarsus, 90, Segment::MAX_SPEED);
+
+	ant.action(LEG_NAME::LeftFront, SEGMENT_NAME::Coxa, 90, Segment::MAX_SPEED);
+	ant.action(LEG_NAME::LeftFront, SEGMENT_NAME::Trochanter, 90, Segment::MAX_SPEED);
+	ant.action(LEG_NAME::LeftFront, SEGMENT_NAME::Femur, 90, Segment::MAX_SPEED);
+	ant.action(LEG_NAME::LeftFront, SEGMENT_NAME::Tabia, 90, Segment::MAX_SPEED);
+	ant.action(LEG_NAME::LeftFront, SEGMENT_NAME::Tarsus, 90, Segment::MAX_SPEED);
+        
+	sleep(4);
+
+	ant.action(LEG_NAME::RightFront, SEGMENT_NAME::Coxa, 135, Segment::MAX_SPEED);
+	ant.action(LEG_NAME::RightFront, SEGMENT_NAME::Trochanter, 135, Segment::MAX_SPEED);
+	ant.action(LEG_NAME::RightFront, SEGMENT_NAME::Femur, 135, Segment::MAX_SPEED);
+	ant.action(LEG_NAME::RightFront, SEGMENT_NAME::Tabia, 135, Segment::MAX_SPEED);
+	ant.action(LEG_NAME::RightFront, SEGMENT_NAME::Tarsus, 135, Segment::MAX_SPEED);
+
+	ant.action(LEG_NAME::LeftFront, SEGMENT_NAME::Coxa, 135, Segment::MAX_SPEED);
+	ant.action(LEG_NAME::LeftFront, SEGMENT_NAME::Trochanter, 135, Segment::MAX_SPEED);
+	ant.action(LEG_NAME::LeftFront, SEGMENT_NAME::Femur, 135, Segment::MAX_SPEED);
+	ant.action(LEG_NAME::LeftFront, SEGMENT_NAME::Tabia, 135, Segment::MAX_SPEED);
+	ant.action(LEG_NAME::LeftFront, SEGMENT_NAME::Tarsus, 135, Segment::MAX_SPEED);
+
+	sleep(4);
+
+	ant.setSegmentAsPeversed(LEG_NAME::RightFront, SEGMENT_NAME::Coxa);
+	ant.setSegmentAsPeversed(LEG_NAME::RightFront, SEGMENT_NAME::Trochanter);
+	ant.setSegmentAsPeversed(LEG_NAME::RightFront, SEGMENT_NAME::Femur);
+	ant.setSegmentAsPeversed(LEG_NAME::RightFront, SEGMENT_NAME::Tabia);
+	ant.setSegmentAsPeversed(LEG_NAME::RightFront, SEGMENT_NAME::Tarsus);
+
+	ant.setSegmentAsPeversed(LEG_NAME::LeftFront, SEGMENT_NAME::Coxa);
+	ant.setSegmentAsPeversed(LEG_NAME::LeftFront, SEGMENT_NAME::Trochanter);
+	ant.setSegmentAsPeversed(LEG_NAME::LeftFront, SEGMENT_NAME::Femur);
+	ant.setSegmentAsPeversed(LEG_NAME::LeftFront, SEGMENT_NAME::Tabia);
+	ant.setSegmentAsPeversed(LEG_NAME::LeftFront, SEGMENT_NAME::Tarsus);
+
+	//reverse
+
+	ant.action(LEG_NAME::RightFront, SEGMENT_NAME::Coxa, 135, Segment::MAX_SPEED);
+	ant.action(LEG_NAME::RightFront, SEGMENT_NAME::Trochanter, 135, Segment::MAX_SPEED);
+	ant.action(LEG_NAME::RightFront, SEGMENT_NAME::Femur, 135, Segment::MAX_SPEED);
+	ant.action(LEG_NAME::RightFront, SEGMENT_NAME::Tabia, 135, Segment::MAX_SPEED);
+	ant.action(LEG_NAME::RightFront, SEGMENT_NAME::Tarsus, 135, Segment::MAX_SPEED);
+
+	ant.action(LEG_NAME::LeftFront, SEGMENT_NAME::Coxa, 135, Segment::MAX_SPEED);
+	ant.action(LEG_NAME::LeftFront, SEGMENT_NAME::Trochanter, 135, Segment::MAX_SPEED);
+	ant.action(LEG_NAME::LeftFront, SEGMENT_NAME::Femur, 135, Segment::MAX_SPEED);
+	ant.action(LEG_NAME::LeftFront, SEGMENT_NAME::Tabia, 135, Segment::MAX_SPEED);
+	ant.action(LEG_NAME::LeftFront, SEGMENT_NAME::Tarsus, 135, Segment::MAX_SPEED);
+
+	sleep(4);
+
+    std::cout << "Finished" << std::endl;
 	return 0;
 }
